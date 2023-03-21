@@ -8,6 +8,7 @@ int main(void)
 {
 	char wo[] = "_putchar\n";
 	int i;
+
 	for (i = 0 ; wo[i] != '\0'; i++)
 	{
 		_putchar(wo[i]);
