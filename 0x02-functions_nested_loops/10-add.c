@@ -1,12 +1,14 @@
 #include "main.h"
 /**
 * add - add two numbers
-* @m, @n: numbers to add
+* @n: numbers to add
+* @m : same thing
 * Return: sum
 */
 int add(int m, int n)
 {
 	int result;
+
 	result = m + n;
 	return (result);
 }
