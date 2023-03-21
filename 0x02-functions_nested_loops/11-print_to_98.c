@@ -1,15 +1,25 @@
 #include "main.h"
+#include <stdio.h>
 /**
-*print_to_98 - a function that prints
-*@n: variable test
-*Return: nothing
+*print_to_98 - prints natural
+*numbers from n to 98
+*@n:integer to start by
+*return: returns nothing
 */
 void print_to_98(int n)
 {
-	int i;
+if (n >= 98)
+{
+while (n > 98)
+printf("%d, ", n--);
 
-	for (i = n ; i <= 9ii8 ; i++)
-	{
-		_putchar(i);
-	}
+printf("%d\n", n);
+}
+else
+{
+while (n < 98)
+printf("%d, ", n++);
+
+printf("%d\n", n);
+}
 }
