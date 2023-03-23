@@ -1,4 +1,5 @@
 #include <ctype.h>
+#include <stdio.h>
 /**
 * isdigit - is it a digit
 * Return: 1 if digit and 0 if not
