@@ -5,11 +5,11 @@
 */
 void print_most_numbers(void)
 {
-        char i, j = '\n';
+	char i, j = '\n';
 
-        for (i = '0'; i <= '9'; i++)
-        {
-                if (i =='2' || i == '4')
+	for (i = '0'; i <= '9'; i++)
+	{
+		if (i == '2' || i == '4')
 		{
 			continue;
 		}
@@ -17,7 +17,7 @@ void print_most_numbers(void)
 		{
 			_putchar(i);
 		}
-        }
-        _putchar(j);
+	}
+	_putchar(j);
 }
 
