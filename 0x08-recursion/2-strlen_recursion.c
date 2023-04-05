@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * _str_recursion - print kength of string recursively
+ * _strlen_recursion - print kength of string recursively
  * @s: string test
  * Return: lendthgof the string
  */
