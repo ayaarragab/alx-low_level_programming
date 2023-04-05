@@ -1,5 +1,6 @@
 #include "main.h"
-int sqrt_newton_recursive_helper(int x, int root);
+#define MAX_DEPTH 50
+int sqrt_newton_recursive_helper(int x, int i);
 /**
 * _sqrt_recursion - gives sqrt
 * @n: variable test
@@ -19,27 +20,25 @@ int _sqrt_recursion(int n)
 	{
 		return (-1);
 	}
-	else
-	{
-		return (sqrt_newton_recursive_helper(n, n));
-	}
+	return (sqrt_newton_recursive_helper(n, 1));
 }
 /**
 * sqrt_newton_recursive_helper - function helper
 * @x: base test
-* @root: for recursives
+* @i: recursive times
 * Return: sqrt root
 */
-int sqrt_newton_recursive_helper(int x, int root)
+int sqrt_newton_recursive_helper(int x, int i)
 {
-	if (root * root == x && (root + 1) * (root + 1) > x)
-	{
-		return (root);
-	}
-	else if (root * root < x && (root + 1) * (root + 1) > x)
+	int _sqrt = i * i;
+
+	if (_sqrt > x)
 	{
 		return (-1);
 	}
-	root = (root + x / root) / 2;
-	return (sqrt_newton_recursive_helper(x, root));
+	if (_sqrt == x)
+	{
+		return (i);
+	}
+	return (sqrt_newton_recursive_helper(x, i + 1));
 }
