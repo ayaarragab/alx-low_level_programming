@@ -35,6 +35,7 @@ int **alloc_grid(int width, int height)
 	if (grid == NULL)
 	{
 		freegrid(grid, height);
+		return (NULL);
 	}
 	for (i = 0; i < height; i++)
 	{
