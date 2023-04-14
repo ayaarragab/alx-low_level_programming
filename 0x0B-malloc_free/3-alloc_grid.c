@@ -3,16 +3,16 @@
 /**
  * freegrid - freea grid
  * @grid: rows
- * @height
+ * @height: columns
  * Return: nothing
  */
 void freegrid(int **grid, int height)
 {
-        int i;
+	int i;
 
-        for (i = 0; i < height; i++)
-                free(grid[i]);
-        free(grid);
+	for (i = 0; i < height; i++)
+		free(grid[i]);
+	free(grid);
 }
 /**
  * alloc_grid - ALLOCATES MEMORY FOR 2D array
@@ -34,7 +34,6 @@ int **alloc_grid(int width, int height)
 	grid = malloc(height * sizeof(int *));
 	if (grid == NULL)
 	{
-		freegrid(grid, height);
 		return (NULL);
 	}
 	for (i = 0; i < height; i++)
