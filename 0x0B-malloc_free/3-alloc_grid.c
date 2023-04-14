@@ -1,6 +1,20 @@
 #include "main.h"
 #include <stdlib.h>
 /**
+ * freegrid - freea grid
+ * @grid: rows
+ * @height
+ * Return: nothing
+ */
+void freegrid(int **grid, int height)
+{
+        int i;
+
+        for (i = 0; i < height; i++)
+                free(grid[i]);
+        free(grid);
+}
+/**
  * alloc_grid - ALLOCATES MEMORY FOR 2D array
  * @width: rows
  * @height: columns
@@ -12,8 +26,6 @@ int **alloc_grid(int width, int height)
 
 	int j;
 
-	int k;
-
 	int **grid;
 
 	if (width <= 0 || height <= 0)
@@ -22,17 +34,14 @@ int **alloc_grid(int width, int height)
 	grid = malloc(height * sizeof(int *));
 	if (grid == NULL)
 	{
-		free(grid);
-		return (NULL);
+		freegrid(grid, height);
 	}
 	for (i = 0; i < height; i++)
 	{
 		grid[i] = malloc(width * sizeof(int));
 		if (grid[i] == NULL)
 		{
-			for (k = 0; k <= i; k++)
-				free(grid[i]);
-			free(grid);
+			freegrid(grid, height);
 			return (NULL);
 		}
 	}
@@ -43,5 +52,4 @@ int **alloc_grid(int width, int height)
 			grid[i][j] = 0;
 	}
 	return (grid);
-	free_grid(grid, height);
 }
