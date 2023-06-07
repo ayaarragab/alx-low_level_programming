@@ -2,7 +2,7 @@
 /**
  * _strlen_recursion - strlen recursively
  * @s: string test
- * return: length
+ * Return: length value
 */
 int _strlen_recursion(char *s)
 {
@@ -10,5 +10,5 @@ int _strlen_recursion(char *s)
 	{
 		return (0);
 	}
-	return 1 + _strlen_recursion(s + 1);
+	return (1 + _strlen_recursion(s + 1));
 }
