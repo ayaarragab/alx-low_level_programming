@@ -12,7 +12,8 @@ char *argstostr(int ac, char **av)
 	char *concatenated_args;
 
 	int i, j, l, total_length;
-	long unsigned int k;
+
+	unsigned long k;
 
 	if (ac == 0 || av == NULL)
 	{
@@ -23,7 +24,7 @@ char *argstostr(int ac, char **av)
 	{
 		total_length += (strlen(av[i]));
 	}
-	concatenated_args = (char *)malloc(total_length + 1);
+	concatenated_args = (char *)malloc(total_length + 1 + ac);
 	if (concatenated_args == NULL)
 	{
 		return (NULL);
@@ -39,5 +40,5 @@ char *argstostr(int ac, char **av)
 		concatenated_args[k] = '\n';
 		k++;
 	}
-	return(concatenated_args);
+	return (concatenated_args);
 }
