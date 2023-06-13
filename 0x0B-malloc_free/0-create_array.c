@@ -22,6 +22,13 @@ char *create_array(unsigned int size, char c)
 	{
 		*(array_chars + i) = c;
 	}
+	if (array_chars == NULL)
+	{
+		free(array_chars);
+		return (NULL);
+	}
+	
 	array_chars[size] = '\0';
 	return (array_chars);
+	free(array_chars);
 }
