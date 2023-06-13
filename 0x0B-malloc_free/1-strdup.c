@@ -11,6 +11,11 @@ char *_strdup(char *str)
 	char *new_string;
 	unsigned int size, i;
 
+	if (str == NULL)
+	{
+		return (NULL);
+	}
+	
 	size = strlen(str) + 1;
 	if (size == 0)
 	{
