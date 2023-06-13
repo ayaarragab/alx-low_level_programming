@@ -24,7 +24,6 @@ char *create_array(unsigned int size, char c)
 	}
 	if (array_chars == NULL)
 	{
-		free(array_chars);
 		return (NULL);
 	}
 	
