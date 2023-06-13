@@ -15,7 +15,6 @@ char *str_concat(char *s1, char *s2)
 
 	if (s1 == NULL)
 	{
-		s1 = "";
 		size2 = strlen(s2) + 1;
 		string_a = (char *)malloc(size2);
 		if (string_a == NULL)
@@ -27,7 +26,6 @@ char *str_concat(char *s1, char *s2)
 	}
 	if (s2 == NULL)
 	{
-		s2 = "";
 		size1 = strlen(s1) + 1;
 		string_a = (char *)malloc(size1);
 		if (string_a == NULL)
@@ -37,11 +35,6 @@ char *str_concat(char *s1, char *s2)
 		string_a[size1 - 1] = '\0';
 		return (string_a);
 	}
-	if (s1 == NULL && s2 == NULL)
-	{
-		return "";
-	}
-	
 	size1 = strlen(s1) + 1;
 	size2 = strlen(s2) + 1;
 	string_a = (char *)malloc(size1 + size2 - 1);
