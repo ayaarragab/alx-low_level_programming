@@ -12,11 +12,11 @@ int *array_range(int min, int max)
 	int *array;
 
 	int numbers_length, k, n;
-	if ((unsigned int)(max - min) >= (unsigned int)((__SIZE_MAX__)/sizeof(int)))
+
+	if ((unsigned int)(max - min) >= (unsigned int)((__SIZE_MAX__) / sizeof(int)))
 	{
 		return (NULL);
 	}
-	
 	if (min > max)
 		return (NULL);
 	numbers_length = max - min + 1;
