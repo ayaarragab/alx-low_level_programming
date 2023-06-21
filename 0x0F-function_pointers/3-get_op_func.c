@@ -4,7 +4,7 @@
  * @s: operator
  * Return: result
 */
-int (*get_op_func(char *s))(int , int )
+int (*get_op_func(char *s))(int, int)
 {
 	op_t ops[] = {
 	{"+", op_add},
@@ -16,7 +16,7 @@ int (*get_op_func(char *s))(int , int )
 	};
 
 	int i;
-	
+
 	for (i = 0; i < 5; i++)
 	{
 		if (strcmp(ops[i].op, s) == 0)
