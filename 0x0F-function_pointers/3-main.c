@@ -1,7 +1,4 @@
 #include "3-calc.h"
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
 /**
  * main - main function
  * @argv: vector array
@@ -10,32 +7,23 @@
 */
 int main(int argc, char *argv[])
 {
-	char op;
-
-	int first_oper, second_oper, result;
+	int first_oper, second_oper;
 
 	int (*operation)(int, int);
 
 	if (argc != 4)
 	{
-		puts("Error");
+		printf("Error\n");
 		exit(98);
 	}
-	op = argv[2][0];
-	if (!(op == '-' || op == '+' || op == '*' || op == '/' || op == '%'))
+	operation = get_op_func(argv[2]);
+	if (!operation)
 	{
-		puts("Error");
+		printf("Error\n");
 		exit(99);
 	}
 	first_oper = atoi(argv[1]);
 	second_oper = atoi(argv[3]);
-	operation = get_op_func(argv[2]);
-	result = operation(first_oper, second_oper);
-	if ((op == '/' || op == '%') && second_oper == 0)
-	{
-		puts("Error");
-		exit(100);
-	}
-	printf("%d\n", result);
+	printf("%d\n", operation(first_oper, second_oper));
 	return (0);
 }
