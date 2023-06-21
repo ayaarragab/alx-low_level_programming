@@ -16,14 +16,14 @@ int main(int argc, char *argv[])
 		printf("Error\n");
 		exit(98);
 	}
+	first_oper = atoi(argv[1]);
+	second_oper = atoi(argv[3]);
 	operation = get_op_func(argv[2]);
 	if (!operation)
 	{
 		printf("Error\n");
 		exit(99);
 	}
-	first_oper = atoi(argv[1]);
-	second_oper = atoi(argv[3]);
 	printf("%d\n", operation(first_oper, second_oper));
 	return (0);
 }
