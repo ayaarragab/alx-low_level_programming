@@ -16,6 +16,11 @@ int main(int argc, char *argv[])
 
 	int (*operation)(int, int);
 
+	if (argc != 4)
+	{
+		puts("Error");
+		exit(98);
+	}
 	op = argv[2][0];
 	if (!(op == '-' || op == '+' || op == '*' || op == '/' || op == '%'))
 	{
@@ -26,12 +31,7 @@ int main(int argc, char *argv[])
 	second_oper = atoi(argv[3]);
 	operation = get_op_func(argv[2]);
 	result = operation(first_oper, second_oper);
-	if (argc != 4)
-	{
-		puts("Error");
-		exit(98);
-	}
-	if ((op == '/' || op == '%') && *argv[3] == 0)
+	if ((op == '/' || op == '%') && second_oper == 0)
 	{
 		puts("Error");
 		exit(100);
