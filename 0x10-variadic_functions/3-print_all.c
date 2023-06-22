@@ -32,25 +32,29 @@ void print_all(const char * const format, ...)
 	i = 0;
 	while (format && format[i])
 	{
-		switch (format[i])
+		if (format[i] == 'c' || format[i] == 's' ||
+		format[i] == 'f' || format[i] == 'i')
 		{
-		case 'c':
-			printf("%c", va_arg(ptr, int));
-			break;
-		case 'i':
-			printf("%d", va_arg(ptr, int));
-			break;
-		case 's':
-			print_string(ptr);
-			break;
-		case 'f':
-			printf("%f", va_arg(ptr, double));
-			break;
-		default:
-			break;
+			switch (format[i])
+			{
+			case 'c':
+				printf("%c", va_arg(ptr, int));
+				break;
+			case 'i':
+				printf("%d", va_arg(ptr, int));
+				break;
+			case 's':
+				print_string(ptr);
+				break;
+			case 'f':
+				printf("%f", va_arg(ptr, double));
+				break;
+			}
+			if (format[i + 1] != '\0')
+			{
+				printf(", ");
+			}
 		}
-		if (format[i + 1] != '\0')
-			printf(", ");
 		i++;
 	}
 	va_end(ptr);
