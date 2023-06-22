@@ -76,7 +76,7 @@ void print_all(const char * const format, ...)
 
 	l = strlen(format);
 	i = 0;
-	while (format[i] != '\0')
+	while (format && format[i])
 	{
 		switch (format[i])
 		{
@@ -89,7 +89,7 @@ void print_all(const char * const format, ...)
 			i++;
 			continue;
 		case 's':
--			print_with_or(i, l, &func, ptr, format[i]);
+			print_with_or(i, l, &func, ptr, format[i]);
 			i++;
 			continue;
 		case 'f':
