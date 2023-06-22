@@ -1,80 +1,65 @@
 #include "variadic_functions.h"
 /**
- * print_char - print char
- * @arg: format
+ * print_with_or - prints with separator if not last
+ * @i: indes
  * @l: length
- * @i: counter
+ * @va_list: arg
+ * @a: argument
+ * @le: letter
  * Return: nothing
 */
-void print_char(va_list arg, int l, int i)
+void print_with_or(int i, int l, void func(char, va_list), va_list a, char le)
 {
 	if (i == l - 1)
 	{
-		printf("%c", va_arg(arg, int));
+		func(le, a);
 		return;
 	}
-	printf("%c, ", va_arg(arg, int));
-}
-/**
- * print_int - print char
- * @arg: format
- * @l: length
- * @i: counter
- * Return: nothing
-*/
-void print_int(va_list arg, int l, int i)
-{
-	if (i == l - 1)
-	{
-		printf("%d", va_arg(arg, int));
-		return;
-	}
-	printf("%d, ", va_arg(arg, int));
+	func(le, a);
+	printf(", ");
 }
 /**
  * print_string - print string
  * @arg: format
- * @l: length
- * @i: counter
  * Return: nothing
 */
-void print_string(va_list arg, int l, int i)
+void print_string(va_list arg)
 {
 	char *str;
 
 	str = va_arg(arg, char *);
 	if (str == NULL)
 	{
-		if (i == l - 1)
-		{
-			printf("%s", "nil");
-			return;
-		}
-		printf("%s,", "nil");
+		printf("%s", "nil");
 		return;
 	}
-	if (i == l - 1)
-	{
-		printf("%s", str);
-		return;
-	}
-	printf("%s, ", str);
+	printf("%s", str);
 }
 /**
- * print_float - prints float
- * @arg: arg
- * @l: length
- * @i: counter
+ * func - doing the process
+ * @arg: argument
+ * @letter: letter
  * Return: nothing
 */
-void print_float(va_list arg, int l, int i)
+void func(char letter, va_list arg)
 {
-	if (i == l - 1)
+	switch (letter)
 	{
-		printf("%f", va_arg(arg, double));
-		return;
+		case 'c':
+			printf("%c", va_arg(arg, int));
+			break;
+		case 'i':
+			printf("%d", va_arg(arg, int));
+			break;
+		case 's':
+			print_string(arg);
+			break;
+		case 'f':
+			printf("%f", va_arg(arg, double));
+			break;
+		default:
+			break;
 	}
-	printf("%f, ", va_arg(arg, double));
 }
 /**
  * print_all - print all
@@ -96,19 +81,19 @@ void print_all(const char * const format, ...)
 		switch (format[i])
 		{
 		case 'c':
-			print_char(ptr, l, i);
+			print_with_or(i, l, &func, ptr, format[i]);
 			i++;
 			continue;
 		case 'i':
-			print_int(ptr, l, i);
+			print_with_or(i, l, &func, ptr, format[i]);
 			i++;
 			continue;
 		case 's':
-			print_string(ptr, l, i);
+			print_with_or(i, l, &func, ptr, format[i]);
 			i++;
 			continue;
 		case 'f':
-			print_float(ptr, l, i);
+			print_with_or(i, l, &func, ptr, format[i]);
 			i++;
 			continue;
 		default:
@@ -116,6 +101,6 @@ void print_all(const char * const format, ...)
 			continue;
 		}
 	}
-	printf("\n");
 	va_end(ptr);
+	printf("\n");
 }
