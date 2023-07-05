@@ -8,7 +8,7 @@ int pop_listint(listint_t **head)
 {
 	listint_t *del = *head;
 
-	if (del == NULL || del->next == NULL)
+	if (del == NULL || del->next == NULL || *head == NULL || head == NULL)
 		return (0);
 	*head = del->next;
 	return (del->next->n);
