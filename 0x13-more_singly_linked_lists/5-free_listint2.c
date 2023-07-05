@@ -10,12 +10,15 @@ void free_listint2(listint_t **head)
 
 	if (node == NULL)
 		return;
-	node = *head;
-	while (node != NULL)
+	if (*head != NULL)
 	{
-		stored = node->next;
-		free(node);
-		node = stored;
+		node = *head;
+		while (node != NULL)
+		{
+			stored = node->next;
+			free(node);
+			node = stored;
+		}
+		*head = NULL;
 	}
-	*head = NULL;
 }
