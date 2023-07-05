@@ -6,19 +6,15 @@
 */
 void free_listint2(listint_t **head)
 {
-	listint_t *node = malloc(sizeof(listint_t)), *stored;
+	listint_t *node = *head, *stored;
 
 	if (node == NULL)
 		return;
-	if (*head != NULL)
+	while (node != NULL)
 	{
-		node = *head;
-		while (node != NULL)
-		{
-			stored = node->next;
-			free(node);
-			node = stored;
-		}
-		*head = NULL;
+		stored = node->next;
+		free(node);
+		node = stored;
 	}
+	*head = NULL;
 }
