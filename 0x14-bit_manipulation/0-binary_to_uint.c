@@ -5,7 +5,7 @@
  * @y: num
  * Return: num
 */
-unsigned int power(unsigned int x, unsigned int y)
+unsigned long int power(unsigned int x, unsigned int y)
 {
 	if (y == 0)
 		return (1);
