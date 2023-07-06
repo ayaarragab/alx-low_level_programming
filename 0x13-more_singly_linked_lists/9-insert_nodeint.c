@@ -15,6 +15,7 @@ size_t listint_len(const listint_t *h)
 	}
 	return (count);
 }
+
 /**
  * insert_nodeint_at_index - insert_nodeint_at_index
  * @head: head
