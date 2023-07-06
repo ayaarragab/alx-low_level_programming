@@ -11,7 +11,7 @@ int get_bit(unsigned long int n, unsigned int index)
 	if (index > (sizeof(n) * 8))
 		return (-1);
 	mask <<= index;
-	return (n & mask) ? 1 : 0;
+	return ((n & mask) ? 1 : 0);
 }
 
 /**
@@ -22,26 +22,22 @@ int get_bit(unsigned long int n, unsigned int index)
 */
 unsigned int flip_bits(unsigned long int n, unsigned long int m)
 {
-	unsigned long int result, counter = 0, ctr = 0;
-
-	int i;
+	unsigned long int result, counter = 0, mask;
 
 	result = m ^ n;
-	i = get_bit(result, counter);
+	mask = 1UL << (sizeof(result) * 8 - 1);
 	while (result != 0)
 	{
-		if (i == 1)
+		if ((result & mask) == 0)
 		{
-			counter++;
-			ctr++;
-		}
-		else if (i == 0)
-		{
-			counter++;
 			result <<= 1;
 			continue;
 		}
-		result <<= 1;
+		else
+		{
+			counter++;
+			result <<= 1;
+		}
 	}
-	return (ctr);
+	return (counter);
 }
