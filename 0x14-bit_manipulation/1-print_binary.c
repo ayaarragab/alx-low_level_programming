@@ -6,17 +6,23 @@
 */
 void print_binary(unsigned long int n)
 {
-	unsigned long result;
+	unsigned long result, m = 1, size = sizeof(n) * 8, f = 0;
 
+	m <<= (size - 1);
 	if (n == 0)
 		_putchar('0');
-	while (n > 0)
+	while (m > 0)
 	{
-		result = n & 1;
-		if (result == 0)
-			_putchar('0');
-		else
+		result = n & m;
+		if (result)
+		{
 			_putchar('1');
-		n = n >> 1;
+			f = 1;
+		}
+		else if (f)
+		{
+			_putchar('0');
+		}
+		m = m >> 1;
 	}
 }
