@@ -57,7 +57,7 @@ int main(int argc, char *argv[])
 	close2 = close(fd2);
 	if (close1 == -1 || close2 == -1)
 	{
-		if (close1 == -1 )
+		if (close1 == -1)
 		{
 			dprintf(2, "Error: Can't close fd %ld\n", fd1);
 			exit(100);
