@@ -36,8 +36,9 @@ void error_generator(char *type, char *argv[])
 */
 int main(int argc, char *argv[])
 {
-	ssize_t read_bytes, written_bytes;
-	int fd1, fd2, close1, close2;
+	ssize_t fd1, fd2, read_bytes, written_bytes, close1, close2;
+
+	mode_t previous_umask = umask(0);
 	char buffer[BUFFER_SIZE];
 
 	if (argc != 3)
@@ -45,7 +46,8 @@ int main(int argc, char *argv[])
 	fd1 = open(argv[1], O_RDONLY);
 	if (fd1 == -1)
 		error_generator("read", argv);
-	fd2 = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
+	fd2 = open(argv[2], O_WRONLY | O_TRUNC | O_CREAT, 0664);
+	umask(previous_umask);
 	if (fd2 == -1)
 		error_generator("write", argv);
 	while ((read_bytes = read(fd1, buffer, 1024)) > 0)
@@ -57,13 +59,13 @@ int main(int argc, char *argv[])
 	close1 = close(fd1);
 	if (close1 == -1)
 	{
-		dprintf(2, "Error: Can't close fd %d\n", fd1);
+		dprintf(2, "Error: Can't close fd %ld\n", fd1);
 		exit(100);
 	}
 	close2 = close(fd2);
 	if (close2 == -1)
 	{
-		dprintf(2, "Error: Can't close fd %d\n", fd2);
+		dprintf(2, "Error: Can't close fd %ld\n", fd2);
 		exit(100);
 	}
 	return (0);
