@@ -50,12 +50,16 @@ int main(int argc, char *argv[])
 	umask(previous_umask);
 	if (fd2 == -1)
 		error_generator("write", argv);
+	if (read(fd1, buffer, 1024) == -1)
+		error_generator("read", argv);
 	while ((read_bytes = read(fd1, buffer, 1024)) > 0)
 	{
 		written_bytes = write(fd2, buffer, read_bytes);
 		if (written_bytes == -1)
 			error_generator("write", argv);
 	}
+	if (read(fd1, buffer, 1024) == -1)
+		error_generator("read", argv);
 	close1 = close(fd1);
 	if (close1 == -1)
 	{
