@@ -53,7 +53,7 @@ int main(int argc, char *argv[])
 	while ((read_bytes = read(fd1, buffer, 1024)) > 0)
 	{
 		written_bytes = write(fd2, buffer, read_bytes);
-		if (written_bytes == -1)
+		if (written_bytes != read_bytes)
 			error_generator("write", argv);
 	}
 	close1 = close(fd1);
