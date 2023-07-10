@@ -11,20 +11,17 @@ void error_generator(char *type, char *argv[])
 {
 	if (strcmp(type, "argc") == 0)
 	{
-		write(2, "Usage: cp file_from file_to\n",
-		strlen("Usage: cp file_from file_to\n"));
+		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 		exit(97);
 	}
 	else if (strcmp(type, "write") == 0)
 	{
-		write(2, "Error: Can't write to", strlen("Error: Can't write to"));
-		dprintf(2, " %s\n", argv[2]);
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
 		exit(99);
 	}
 	else if (strcmp(type, "read") == 0)
 	{
-		write(2, "Error: Can't read from", strlen("Error: Can't read from"));
-		dprintf(2, " %s\n", argv[1]);
+		dprintf(STDERR_FILENO, "Error: Can't read from %s\n", argv[1]);
 		exit(98);
 	}
 }
