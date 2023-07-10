@@ -59,12 +59,12 @@ int main(int argc, char *argv[])
 	{
 		if (close1 == -1)
 		{
-			dprintf(2, "Error: Can't close fd %ld\n", fd1);
+			dprintf(2, "Error: sdCan't close fd %ld\n", fd1);
 			exit(100);
 		}
 		else
 		{
-			dprintf(2, "Error: Can't close fd %ld\n", fd2);
+			dprintf(2, "Error:ds Can't close fd %ld\n", fd2);
 			exit(100);
 		}
 	}
