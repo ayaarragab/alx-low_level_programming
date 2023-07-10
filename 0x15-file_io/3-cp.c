@@ -57,16 +57,19 @@ int main(int argc, char *argv[])
 			error_generator("write", argv);
 	}
 	close1 = close(fd1);
-	if (close1 == -1)
-	{
-		dprintf(2, "Error: Can't close fd %ld\n", fd1);
-		exit(100);
-	}
 	close2 = close(fd2);
-	if (close2 == -1)
+	if (close1 == -1 || close2 == -1)
 	{
-		dprintf(2, "Error: Can't close fd %ld\n", fd2);
-		exit(100);
+		if (close1 == -1 )
+		{
+			dprintf(2, "Error: Can't close fd %ld\n", fd1);
+			exit(100);
+		}
+		else
+		{
+			dprintf(2, "Error: Can't close fd %ld\n", fd2);
+			exit(100);
+		}
 	}
 	return (0);
 }
