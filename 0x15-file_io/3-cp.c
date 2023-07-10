@@ -38,7 +38,6 @@ int main(int argc, char *argv[])
 {
 	ssize_t read_bytes, written_bytes;
 	int fd1, fd2, close1, close2;
-	mode_t previous_umask = umask(0);
 	char buffer[BUFFER_SIZE];
 
 	if (argc != 3)
@@ -46,8 +45,7 @@ int main(int argc, char *argv[])
 	fd1 = open(argv[1], O_RDONLY);
 	if (fd1 == -1)
 		error_generator("read", argv);
-	fd2 = open(argv[2], O_WRONLY | O_TRUNC | O_CREAT, 0664);
-	umask(previous_umask);
+	fd2 = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
 	if (fd2 == -1)
 		error_generator("write", argv);
 	while ((read_bytes = read(fd1, buffer, 1024)) > 0)
