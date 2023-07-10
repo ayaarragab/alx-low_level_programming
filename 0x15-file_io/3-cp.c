@@ -36,8 +36,8 @@ void error_generator(char *type, char *argv[])
 */
 int main(int argc, char *argv[])
 {
-	ssize_t read_bytes, written_bytes, close1, close2;
-	int fd1, fd2;
+	ssize_t read_bytes, written_bytes;
+	int fd1, fd2, close1, close2;
 	mode_t previous_umask = umask(0);
 	char buffer[BUFFER_SIZE];
 
