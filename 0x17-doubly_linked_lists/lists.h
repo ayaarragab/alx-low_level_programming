@@ -19,4 +19,5 @@ typedef struct dlistint_s
     struct dlistint_s *next;
 } dlistint_t;
 size_t print_dlistint(dlistint_t *h);
+size_t dlistint_len(dlistint_t *h);
 #endif
