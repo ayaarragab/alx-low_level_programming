@@ -44,10 +44,16 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 		i++;
 		temp = temp->next;
 	}
-	nextnode = temp->next;
-	temp->next = new_node;
+	if (temp->next != NULL)
+	{
+		nextnode = temp->next;
+		temp->next = new_node;
+		new_node->prev = temp;
+		new_node->next = nextnode;
+		nextnode->prev = new_node;
+		return (new_node);
+	}
 	new_node->prev = temp;
-	new_node->next = nextnode;
-	nextnode->prev = new_node;
+	new_node->next = NULL;
 	return (new_node);
 }
