@@ -25,7 +25,7 @@ unsigned int calc_len_list(dlistint_t *head)
 */
 dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 {
-	dlistint_t *temp = *h, *nextnode, *new_node;
+	dlistint_t *temp = *h, *nextone, *new_node;
 	unsigned int i = 0;
 
 	new_node = malloc(sizeof(dlistint_t));
@@ -46,11 +46,11 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 	}
 	if (temp->next != NULL)
 	{
-		nextnode = temp->next;
+		nextone = temp->next;
 		temp->next = new_node;
 		new_node->prev = temp;
-		new_node->next = nextnode;
-		nextnode->prev = new_node;
+		new_node->next = nextone;
+		nextone->prev = new_node;
 		return (new_node);
 	}
 	temp->next = new_node;
