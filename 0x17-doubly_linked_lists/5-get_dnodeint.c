@@ -4,10 +4,10 @@
  * @head: head
  * Return: length
 */
-int calc_len_list(dlistint_t *head)
+unsigned int calc_len_list(dlistint_t *head)
 {
 	dlistint_t *temp = head;
-	size_t count = 0;
+	unsigned int count = 0;
 
 	while (temp != NULL)
 	{
