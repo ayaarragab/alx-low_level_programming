@@ -24,7 +24,7 @@ hash_node_t *create_item(char *key, char *value)
 /**
  * free_hash_table - frees a hash table
  * @table: table
- * 
+ * @index: index
  * Return: nothing
 */
 void free_hash_table(hash_table_t **table, unsigned long int index)
@@ -45,7 +45,7 @@ void free_hash_table(hash_table_t **table, unsigned long int index)
 }
 
 /**
- * hash_table_set - set value to specifc key 
+ * hash_table_set - set value to specifc key
  * @ht: hash table
  * @key: key
  * @value: value
@@ -63,6 +63,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	if ((ht->array)[index] == NULL)
 	{
 		hash_node_t *item = create_item((char *)key, (char *)value);
+
 		item->next = NULL;
 		(ht->array)[index] = item;
 		free_hash_table(&ht, index);
